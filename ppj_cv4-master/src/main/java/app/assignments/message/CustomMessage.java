@@ -16,11 +16,17 @@
 
 package app.assignments.message;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component("customMessage")
 public class CustomMessage implements Message {
 
+    @Value("Boleslav")
     private String sender;
+    @Value("Vaclav")
     private String recipient;
+    @Value("U dead")
     private String text;
 
     public CustomMessage() {

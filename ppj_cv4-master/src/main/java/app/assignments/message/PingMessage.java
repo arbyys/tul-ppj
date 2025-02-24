@@ -16,12 +16,13 @@
 
 package app.assignments.message;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component("pingMessage")
 public class PingMessage implements Message {
 
-    public String getSender() {
-        return "ping";
-    }
+    public String getSender() { return "ping"; }
 
     public String getRecipient() {
         return "pong";

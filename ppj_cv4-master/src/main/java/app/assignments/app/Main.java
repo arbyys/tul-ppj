@@ -1,6 +1,10 @@
 package app.assignments.app;
 
+import app.assignments.message.PingMessage;
+import app.assignments.message.CustomMessage;
+import app.assignments.message.ReplyMessage;
 import app.assignments.message.Message;
+import app.assignments.writer.StdoutWriter;
 import app.assignments.writer.ListWriter;
 import app.assignments.writer.Writer;
 import org.springframework.context.ApplicationContext;
@@ -10,15 +14,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("/application-context.xml");
 
-        Message ping = (Message) applicationContext.getBean("pingMessage");
-        Message hello = (Message) applicationContext.getBean("helloMessage");
-        Message pingReply = (Message) applicationContext.getBean("pingMessageReply");
+        Message ping = applicationContext.getBean(PingMessage.class);
+        Message hello = applicationContext.getBean(CustomMessage.class);
+        Message pingReply = applicationContext.getBean(ReplyMessage.class);
 
-        Writer stdoutWriter = (Writer) applicationContext.getBean("stdoutWriter");
-        Writer listWriter = (Writer) applicationContext.getBean("listWriter");
+        Writer stdoutWriter = applicationContext.getBean(StdoutWriter.class);
+        Writer listWriter = applicationContext.getBean(ListWriter.class);
         stdoutWriter.write(ping);
         stdoutWriter.write(hello);
         stdoutWriter.write(pingReply);
